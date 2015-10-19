@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <dimen name="margin_huge">32dip</dimen>
+    <dimen name="margin_large">16dip</dimen>
+    <dimen name="margin_medium">8dip</dimen>
+    <dimen name="margin_small">4dip</dimen>
+    <dimen name="margin_micro">2dip</dimen>
+    <dimen name="one_dp">1dip</dimen>
+    <dimen name="padding_large">8dip</dimen>
+    <dimen name="padding_medium">4dp</dimen>
+    <dimen name="padding_small">2dp</dimen>
+    <dimen name="text_micro">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_huge">20sp</dimen>
+    <dimen name="text_titanic">23sp</dimen>
+    <dimen name="text_gigantic">24sp</dimen>
+    <dimen name="text_double_size">32dp</dimen>
+    <dimen name="text_triple_size">40dp</dimen>
+    <dimen name="sliding_menu_width">240dp</dimen>
+    <dimen name="sliding_menu_behind_offset">60dp</dimen>
+    <dimen name="sliding_menu_above_offset">0dp</dimen>
+    <dimen name="user_avatar_size">48dp</dimen>
+    <dimen name="user_avatar_size_small">32dp</dimen>
+</resources>

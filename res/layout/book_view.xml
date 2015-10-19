@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"  android:layout_weight="1">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:id="@+id/scrollView"
+        android:layout_weight="9">
+
+        <LinearLayout
+            android:orientation="vertical"  android:layout_margin="@dimen/margin_medium"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_large">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/book_basic"
+                android:baselineAligned="false">
+
+              <ImageView
+                  android:layout_width="78sp"
+                  android:layout_height="120sp"
+                  android:clickable="true"
+                  android:onClick="popup"
+                  android:id="@+id/book_img"   android:padding="@dimen/padding_medium"
+                  android:src="@drawable/default_image"
+                  android:layout_gravity="top" />
+
+                <RelativeLayout  android:layout_width="0dp"  android:layout_weight="0.78"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/book_basic_info"
+                        android:layout_gravity="center_horizontal|top"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Title"  android:ellipsize="end"
+                            style="@style/DoubanTextTitle.Black"
+                            android:id="@+id/bookTitle" />
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/authors_container">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Authors"  android:ellipsize="end"
+                                style="@style/DoubanText.Prefix"
+                                android:id="@+id/bookAuthor" />
+
+                        </LinearLayout>
+                      <LinearLayout
+                          android:layout_width="fill_parent" android:id="@+id/subtitle_layout"
+                          android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="副标题:"
+                            style="@style/DoubanText.Prefix"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""  android:ellipsize="end" style="@style/DoubanText"
+                            android:id="@+id/bookSubtitle" />
+                      </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/publisher_container">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="出版:"
+                                style="@style/DoubanText.Prefix"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                style="@style/DoubanText"
+                                android:id="@+id/bookPublisher"
+                                android:layout_marginRight="@dimen/margin_medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/page_container">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="页数:" style="@style/DoubanText.Prefix"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            style="@style/DoubanText.Suffix"
+                            android:id="@+id/bookPages" />
+                            </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/price_container">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="价格:" style="@style/DoubanText.Prefix"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            style="@style/DoubanText.Suffix"
+                            android:id="@+id/bookPrice" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content" android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignWithParentIfMissing="false"
+                        android:layout_height="match_parent">
+
+                        <include layout="@layout/rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="@dimen/margin_medium"
+                            android:layout_marginBottom="@dimen/margin_small" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:id="@+id/status_layout"
+            android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/margin_medium">
+            <Button
+                android:layout_width="0dp"  android:onClick="collect" style="@style/DoubanButton.WhiteText"
+                android:text="@string/wish"  android:layout_weight="0.25"  android:background="@drawable/button_pink"
+                android:id="@+id/wish"  android:layout_gravity="center_vertical"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:layout_width="0dp" android:onClick="collect"  style="@style/DoubanButton.WhiteText"
+                android:text="@string/reading_brief"  android:layout_weight="0.25"  android:background="@drawable/button_green"
+                android:id="@+id/reading" android:layout_gravity="center_vertical"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:layout_width="0dp" android:onClick="collect" style="@style/DoubanButton.WhiteText"
+                android:text="@string/read"  android:layout_weight="0.25"  android:background="@drawable/button_brown"
+                android:id="@+id/read"  android:layout_gravity="center_vertical"
+                android:layout_height="match_parent" />
+            <Button
+                android:layout_width="0dp" android:onClick="deCollect" style="@style/DoubanButton.WhiteText"
+                android:text="@string/decollect" android:layout_weight="0.15" android:background="@drawable/button_black"
+                android:id="@+id/delete" android:layout_gravity="center_vertical"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical" android:id="@+id/book_layout_tags" android:visibility="visible"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+               <include layout="@layout/tags"
+                   android:layout_height="@dimen/text_huge"
+                   android:layout_margin="@dimen/margin_medium" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" android:id="@+id/comments">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5星力荐" style="@style/DoubanText" android:textColor="@color/text_orange"
+                        android:id="@+id/recommend"
+                        android:layout_gravity="top"
+                        android:gravity="top"
+                        android:layout_marginTop="0dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="「"   android:id="@+id/comment_quote"
+                        android:layout_gravity="left|top" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:id="@+id/comment"   android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_micro" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/book_content">
+                <include layout="@layout/divider" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"  style="@style/DoubanTextTitle.Green"
+                    android:text="@string/content_intro"
+                    android:id="@+id/book_content_title" />
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"   android:onClick="toggleContent" android:clickable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"  style="@style/DoubanText.Clickable"
+                        android:text=""
+                        android:id="@+id/book_content_abstract"  android:ellipsize="end" android:maxLines="4"
+                        android:layout_gravity="left|center_vertical" />
+                    <TextView
+                        android:layout_width="wrap_content"   style="@style/DoubanText.Clickable"
+                        android:layout_height="wrap_content" android:visibility="gone"
+                        android:text=""
+                        android:id="@+id/book_content_abstract_longtext"
+                        android:layout_gravity="left|center_vertical" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/content_arrow"
+                        android:layout_gravity="bottom|right"
+                        android:src="@android:drawable/arrow_down_float" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/book_author">
+                <include layout="@layout/divider" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" style="@style/DoubanTextTitle.Green"
+                    android:text="@string/author_intro"
+                    android:id="@+id/book_author_title" />
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" android:clickable="true"   android:onClick="toggleAuthor">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:ellipsize="end" android:maxLines="4"    style="@style/DoubanText.Clickable"
+                    android:text=""
+                    android:id="@+id/book_author_abstract" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"   android:visibility="gone"
+                        android:text=""   style="@style/DoubanText.Clickable"
+                        android:id="@+id/book_author_abstract_longtext" />
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/author_arrow"
+                        android:layout_gravity="bottom|right"
+                        android:src="@android:drawable/arrow_down_float" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/book_catalog">
+                <include layout="@layout/divider" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" style="@style/DoubanTextTitle.Green"
+                    android:text="@string/catalog_intro"
+                    android:id="@+id/book_catalog_title" />
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" android:clickable="true" android:onClick="toggleCatalog">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:ellipsize="end" android:maxLines="4"
+                    android:text="无"    style="@style/DoubanText.Clickable"
+                    android:id="@+id/book_catalog_abstract" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"   android:visibility="gone"
+                        android:text="无"    style="@style/DoubanText.Clickable"
+                        android:id="@+id/book_catalog_abstract_longtext" />
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/catalog_arrow"
+                        android:layout_gravity="bottom|right"
+                        android:src="@android:drawable/arrow_down_float" />
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/text_triple_size"
+        android:id="@+id/book_annotation"  android:background="@color/white"
+        android:layout_gravity="bottom|center">
+
+      <LinearLayout
+          android:orientation="horizontal"  android:layout_gravity="center"
+          android:layout_width="0dp"  android:layout_weight="1"
+          android:layout_height="match_parent"
+          android:gravity="center">
+
+        <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"  android:clickable="true" android:onClick="viewNotes"
+             android:text="@string/annotation"
+             android:id="@+id/annotation_num"    android:drawableLeft="@drawable/book_content_notes"
+            style="@style/DoubanTextTitle.Black"
+            android:layout_gravity="center"
+            android:gravity="center_vertical" />
+      </LinearLayout>
+
+      <View
+          android:layout_width="1dip"
+          android:layout_height="fill_parent"
+          android:background="@color/gray_divider"
+          />
+
+      <LinearLayout
+          android:orientation="horizontal"    android:layout_weight="1"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:clickable="true" android:onClick="viewReviews"
+            android:text="@string/review"  android:drawableLeft="@drawable/book_content_reviews"
+            android:id="@+id/reviews_guider"
+            style="@style/DoubanTextTitle.Black"
+            android:gravity="center_vertical"
+            android:layout_gravity="center" />
+      </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

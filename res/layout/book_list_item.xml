@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_width="fill_parent"  android:descendantFocusability="blocksDescendants"
+    android:layout_height="wrap_content" android:orientation="vertical"  android:layout_margin="@dimen/margin_medium"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"  android:gravity="center"  android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:id="@+id/book_item"
+        android:baselineAligned="false"
+        android:layout_marginLeft="@dimen/margin_small">
+
+        <include layout="@layout/book_image" />
+
+        <LinearLayout android:layout_height="match_parent"
+            android:layout_width="0dp"  android:layout_weight="0.83"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:baselineAligned="false">
+        <LinearLayout  android:layout_gravity="center_vertical"  android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"  android:gravity="left"
+            android:layout_height="match_parent"  >
+
+            <include layout="@layout/book_basic_info" />
+
+
+            <include layout="@layout/rating" />
+            </LinearLayout>
+
+        <LinearLayout android:layout_height="fill_parent"
+            android:layout_width="wrap_content"  android:clickable="true"
+            android:layout_gravity="center"
+            android:gravity="center" android:id="@+id/fav_layout"
+            android:paddingLeft="@dimen/text_medium" android:paddingRight="@dimen/text_medium"
+            android:paddingTop="@dimen/text_large" android:paddingBottom="@dimen/text_large">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wish"
+                android:id="@+id/favorite"
+                android:src="@drawable/button_favorite"
+                android:contentDescription="" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/currentState"
+                android:autoText="false"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <include layout="@layout/divider" android:layout_marginTop="@dimen/margin_medium" android:layout_marginBottom="@dimen/margin_medium"/>
+
+</LinearLayout>

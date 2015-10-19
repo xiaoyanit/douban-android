@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/margin_medium">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_chapter_hint"
+        android:layout_margin="@dimen/margin_medium"
+        android:hint="@string/chapter" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookPage"
+            android:hint="@string/pages" android:maxLength="6"
+            android:layout_margin="@dimen/margin_medium"
+            android:inputType="numberSigned"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/page"
+            android:layout_margin="@dimen/margin_medium"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chapter_name"  android:maxLength="100"
+        android:layout_margin="@dimen/margin_medium"
+        android:hint="@string/chapter" />
+
+</LinearLayout>

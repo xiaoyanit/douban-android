@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_margin="@dimen/margin_medium"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/status_layout"
+        android:layout_marginLeft="@dimen/margin_small">
+        <Button
+            android:layout_width="wrap_content"  android:onClick="check" style="@style/DoubanButton.Small"
+            android:text="@string/wish"  android:layout_weight="0.25"  android:background="@drawable/button_pink"
+            android:id="@+id/wish"
+            android:layout_gravity="center" />
+        <Button
+            android:layout_width="wrap_content" android:onClick="check"   style="@style/DoubanButton.Small"
+            android:text="@string/reading"  android:layout_weight="0.25"  android:background="@drawable/button_green"
+            android:id="@+id/reading"
+            android:layout_gravity="center" />
+
+        <Button
+            android:layout_width="wrap_content" android:onClick="check"  style="@style/DoubanButton.Small"
+            android:text="@string/read"  android:layout_weight="0.25"  android:background="@drawable/button_brown"
+            android:id="@+id/read"
+            android:layout_gravity="center" />
+
+        <include layout="@layout/ratingbar"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout android:clickable="true" android:onClick="addTag" android:layout_weight="0.9"
+        android:layout_width="wrap_content"  android:layout_margin="@dimen/margin_medium"
+        android:layout_height="wrap_content" >
+        <include layout="@layout/tags"/>
+    </LinearLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"  android:layout_gravity="right|center_vertical"
+          android:id="@+id/chars_count" android:text="0/350"
+          android:layout_marginRight="@dimen/margin_large"
+          android:gravity="center_horizontal"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:id="@+id/comment" android:hint="@string/short_comments"
+        android:lines="7"
+        android:longClickable="true"
+        android:linksClickable="true"
+        android:gravity="top" android:maxLength="350"
+        android:layout_gravity="center"
+        android:layout_weight="1" />
+
+    <include layout="@layout/keyboard"
+        android:layout_gravity="right"
+        android:layout_margin="@dimen/margin_medium" />
+</LinearLayout>

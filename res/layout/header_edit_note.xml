@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/padding_large"
+    android:paddingRight="@dimen/padding_large">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel" android:onClick="back"
+        android:src="@drawable/header_cancel"
+        android:layout_gravity="center|left"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:orientation="horizontal" android:onClick="editChapter" android:clickable="true"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="P5"  android:drawableRight="@drawable/add_note_page_or_chapter"
+            android:id="@+id/title"  android:layout_margin="@dimen/margin_medium"
+            android:layout_gravity="center"
+            android:gravity="center" style="@style/DoubanActionBar.Title"
+            android:background="@drawable/button_green_note_chapter" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"  android:onClick="checkPrivacy"
+        android:layout_height="wrap_content"
+        android:id="@+id/privacy"  android:src="@drawable/public_icon"
+         android:layout_margin="@dimen/margin_medium"
+         android:layout_marginRight="@dimen/margin_large" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  android:focusable="true" android:clickable="true"
+        android:id="@+id/submit"  android:layout_marginLeft="@dimen/margin_large" android:onClick="submit"
+        android:src="@drawable/header_submit"
+        android:layout_gravity="center|right" />
+
+</LinearLayout>

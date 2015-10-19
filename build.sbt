@@ -1,82 +1,74 @@
 import sbt._
 
-import Keys._
+import android.Keys._
 
-import AndroidKeys._
+import android.Dependencies.{apklib,aar}
+
+//android.Plugin.buildAar
+android.Plugin.androidBuild
 
 organization := "com.douban"
 
-name := "douban-book"
+name := "douban-android"
 
-version := "1.0"
+scalaVersion := "2.11.6"
 
-scalaVersion := "2.10.1"
+minSdkVersion in Android := "16"
 
-resolvers += "oss repo" at "https://oss.sonatype.org/content/repositories/releases/"
+platformTarget in Android := "android-20"
 
-javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
+javacOptions ++= Seq("-source", "1.7")
 
-scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit","#-optimise")
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit")
 
-//autoScalaLibrary := false
+incOptions := incOptions.value.withNameHashing(true) 
 
-//unmanagedBase <<= baseDirectory { base => base / "libs" }
+autoScalaLibrary := false
+
+//android.enforceUniquePackageName :=false
+
+transitiveAndroidLibs in Android := false
+
+libraryProject in Android := false
+
+// call install and run without having to prefix with android:
+run <<= run in Android
+
+install <<= install in Android
+
+// use local published scaloid in order to build 'scaloid-support-v4' lib
+val scaloidVersion = "3.6.1-10"
 
 libraryDependencies ++= Seq(
-			"org.scaloid" % "scaloid" % "1.1_8_2.10",
-			"com.douban" %% "scala-api" % "2.3" ,
-			"com.google.zxing" % "core" % "2.1",
-			"com.google.android" % "support-v4" % "r7")
+			"org.scaloid" %% "scaloid" % scaloidVersion,
+			"org.scaloid" %% "scaloid-support-v4" % scaloidVersion , /* local published */
+			"com.douban" %% "scala-api" % "2.4.7",
+			"com.google.zxing" % "core" % "3.1.0",
+      "org.scala-lang" % "scala-library" % "2.11.6" % "provided",
+			"com.github.chrisbanes.photoview" % "library" % "1.2.3"
+			)
 
-proguardOption in Android :="""
--verbose
--printseeds target/keep.log
--printmapping target/obf.log
--optimizationpasses 5
--overloadaggressively
--optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
--repackageclasses
--allowaccessmodification
--mergeinterfacesaggressively
--assumenosideeffects class scala.Console
--assumenosideeffects class org.scaloid.common.WidgetFamily**
--assumenosideeffects class android.util.Log {public static boolean isLoggable(java.lang.String, int);public static int v(...); public static int i(...); public static int w(...); public static int d(...); public static int e(...);}
--dontpreverify
--dontskipnonpubliclibraryclasses
--dontskipnonpubliclibraryclassmembers
--keepclassmembers class * { ** MODULE$; }
--keepattributes *Annotation*
--keep class org.scaloid.common.SContext
--keep class org.scaloid.common.LoggerTag
--keep class android.support.v4.app.Fragment
--keep class scala.reflect.Manifest
--keep class scala.reflect.ClassTag
--keep class scala.collection.mutable.ArrayBuffer
--keep class scala.math.Ordering
--keep public class scala.Option
--keep public class scala.PartialFunction
--keep public class scala.Function0
--keep public class scala.Function1
--keep public class scala.Function2
--keep public class scala.Product
--keep public class scala.Tuple2
--keep public class scala.collection.GenSeq
--keep public class scala.collection.generic.CanBuildFrom
--keep public class scala.collection.SeqLike {public protected *;}
--keepclasseswithmembernames class * {native <methods>;}
--keepclasseswithmembers class * {public <init>(android.content.Context, android.util.AttributeSet);}
--keepclasseswithmembers class * {public <init>(android.content.Context, android.util.AttributeSet, int);}
--keepclassmembers class * extends android.app.Activity {   public void *(android.view.View);}
--keepclassmembers enum * {public static **[] values();public static ** valueOf(java.lang.String);}
--keep class * implements android.os.Parcelable {  public static final android.os.Parcelable$Creator *;}
--keepclassmembers class **.R$* {public static <fields>;}
-"""
+unmanagedJars in Compile ~= { _ filterNot (_.data.getName startsWith "android-support-v4") } 
 
-proguardOptimizations in Android ++= Seq(
-"-dontoptimize",
-"-dontobfuscate",
-"-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod",
-"-keepparameternames",
-"-keepdirectories",
-"#-dontusemixedcaseclassnames"
+useProguard in Android := true
+
+proguardScala in Android := true
+
+typedResources in Android := true
+
+shrinkResources in Android := true
+
+proguardCache in Android ++=Seq(
+	"com.douban",
+	"com.android.support", 
+	"com.google.zxing",
+  "com.jeremyfeinstein",
+	"org.scaloid"
 )
+
+
+//integrate all the proguard options from the config file into android-sdk-plugin
+proguardOptions in Android ++= scala.io.Source.fromFile(baseDirectory.value.getAbsolutePath+"/proguard-android-optimize.txt").getLines().toSeq.filter(a=>{! a.trim.isEmpty && ! a.contains("//")})
+
+proguardOptions in Android ++= scala.io.Source.fromFile(baseDirectory.value.getAbsolutePath+"/proguard.cfg").getLines().toSeq.filter(a=>{! a.trim.isEmpty && ! a.contains("//")})
+

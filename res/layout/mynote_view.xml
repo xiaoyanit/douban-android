@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView"
+   >
+<LinearLayout  android:orientation="vertical"
+    android:layout_width="match_parent" android:layout_height="match_parent" >
+
+
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" android:clickable="true" android:onClick="viewBook"
+      android:background="@color/dark_transparent"
+      android:baselineAligned="false">
+
+    <include layout="@layout/book_image"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_gravity="left"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:gravity="left"
+        android:layout_height="wrap_content">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Title"  android:singleLine="true"  android:ellipsize="end"
+          style="@style/DoubanTextTitle.White"
+          android:id="@+id/bookTitle" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:paddingLeft="@dimen/padding_large"
+          android:text="Authors" android:singleLine="true" android:ellipsize="end"
+          style="@style/DoubanText"
+          android:id="@+id/bookAuthor" />
+    </LinearLayout>
+      </LinearLayout>
+
+  <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  android:padding="@dimen/padding_large">
+
+          <Button
+              android:layout_width="wrap_content"
+              android:layout_height="@dimen/text_double_size"
+              android:text="P123"   style="@style/DoubanButton.Page"  android:padding="0dp"
+              android:id="@+id/page_num"
+              android:layout_alignParentRight="false"
+              android:layout_centerVertical="true"
+              android:layout_margin="@dimen/margin_medium"
+              android:layout_alignParentLeft="true" />
+
+          <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2013-11-08 07:54:36"
+                android:id="@+id/note_time"
+                android:layout_toRightOf="@+id/user_avatar"
+                android:layout_below="@+id/username"
+                android:layout_marginLeft="@dimen/margin_medium"
+              android:layout_alignParentRight="true"
+              android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chanpter one"
+            android:id="@+id/chapter_name"
+            android:layout_margin="@dimen/margin_medium"
+            android:textStyle="bold"
+            android:textColor="@color/text_green" />
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"  android:layout_marginLeft="@dimen/margin_large" android:layout_marginRight="@dimen/margin_large"
+      android:id="@+id/note_content"></LinearLayout>
+</LinearLayout>
+    </ScrollView>
+
